@@ -18,8 +18,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v1
         with:
-          username: geNAZt
+          username: gomint
           password: ${{ secrets.DOCKER_PASSWORD }}
-          registry: docker.state.genazt.me
           repository: gomint/website
-          tags: latest
+          tags: ${{ github.sha }}
