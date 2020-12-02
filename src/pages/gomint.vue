@@ -1,5 +1,33 @@
 <script>
-export default {}
+import {onMounted, reactive} from 'vue';
+
+export default {
+  setup() {
+    const release = reactive({
+      isLoading: true,
+      tag: '',
+      assetSize: '',
+      assetDownloadUrl: '',
+    });
+
+    onMounted(async () => {
+      const releasesEndpoint = 'https://api.github.com/repos/gomint/gomint/releases?per_page=1';
+      const releasesData = await fetch(releasesEndpoint);
+      const releaseData = await releasesData.json();
+      release.tag = releaseData[0].tag_name;
+
+      const assetsEndpoint = releaseData[0].assets[0].url;
+      const assetsData = await fetch(assetsEndpoint);
+      const assetData = await assetsData.json();
+      release.assetSize = assetData.size;
+      release.assetDownloadUrl = assetData.browser_download_url;
+
+      release.isLoading = false;
+    });
+
+    return { release };
+  },
+}
 </script>
 
 <template>
@@ -16,14 +44,38 @@ export default {}
       <span class="message-container-message">
         The new GoMint website isn't quite ready yet, but
         we're working on it! In the meanwhile, if you were
-        looking for the latest GoMint releases, the documentation,
-        or a place to get in touch with the GoMint community,
-        the interactables down below will certainly help you out.
+        looking for the latest GoMint release, the documentation,
+        the source code or a place to get in touch with the GoMint
+        community, the interactables down below will certainly help
+        you out.
       </span>
       <div class="message-container-interactables">
-        <a class="message-container-interactable message-container-interactable-solid" href="https://github.com/gomint/gomint">Latest release</a>
-        <a class="message-container-interactable" href="https://docs.gomint.io">Documentation</a>
-        <a class="message-container-interactable" href="https://discord.com/invite/qC4nJVN">Discord server</a>
+        <a class="message-container-interactable" href="https://discord.com/invite/qC4nJVN">
+          <i class="fab fa-discord"></i>
+          &nbsp;
+          Discord server
+        </a>
+        <a class="message-container-interactable" href="https://github.com/gomint/gomint">
+          <i class="fab fa-github"></i>
+          &nbsp;
+          Source code
+        </a>
+        <a class="message-container-interactable" href="https://docs.gomint.io">
+          <i class="fas fa-book"></i>
+          &nbsp;
+          Documentation
+        </a>
+        <a class="message-container-interactable message-container-interactable-solid" :href="release.assetDownloadUrl">
+          <i class="fas fa-download"></i>
+          &nbsp;
+          Latest release
+          &nbsp;
+          &nbsp;
+          <span class="release-info">
+            <span v-if="release.isLoading">Loading...</span>
+            <span v-else>{{ release.tag }}, {{ (release.assetSize / 1024 / 1024).toFixed(2) }}MB</span>
+          </span>
+        </a>
       </div>      
     </div>
   </div>
@@ -122,18 +174,31 @@ export default {}
   }
 
   .message-container-interactables > * {
-    flex: 1 1 120px;
+    flex: 1 1 160px;
   }
 
   .message-container-interactable {
     border: 2px solid var(--color-deep-navy);
     border-radius: 20px;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-weight: 600;
     color:white;
+    transition: 0.25s ease;
+    &:hover {
+      border-color: var(--color-navy);
+    }
   }
 
   .message-container-interactable-solid {
     background-color: var(--color-deep-navy);
+    transition: 0.25s ease;
+    &:hover {
+      background-color: var(--color-navy);
+    }
+  }
+
+  .release-info {
+    font-size: 0.5em;
+    font-weight: 300;
   }
 </style>
