@@ -21,9 +21,9 @@ export default {}
         the interactables down below will certainly help you out.
       </span>
       <div class="message-container-interactables">
-        <a class="message-container-interactable message-container-interactable-solid" href="">Latest release</a>
-        <a class="message-container-interactable" href="">Documentation</a>
-        <a class="message-container-interactable" href="">Discord server</a>
+        <a class="message-container-interactable message-container-interactable-solid" href="https://github.com/gomint/gomint">Latest release</a>
+        <a class="message-container-interactable" href="https://docs.gomint.io">Documentation</a>
+        <a class="message-container-interactable" href="https://discord.com/invite/qC4nJVN">Discord server</a>
       </div>      
     </div>
   </div>
