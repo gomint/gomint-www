@@ -70,7 +70,6 @@ export default {
           &nbsp;
           Latest release
           &nbsp;
-          &nbsp;
           <span class="release-info">
             <span v-if="release.isLoading">Loading...</span>
             <span v-else>{{ release.tag }}, {{ (release.assetSize / 1024 / 1024).toFixed(2) }}MB</span>
@@ -137,7 +136,7 @@ export default {
   }
 
   .status-container-creeper {
-    max-height: 320px;
+    height: 320px;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
   }
@@ -198,7 +197,7 @@ export default {
   }
 
   .release-info {
-    font-size: 0.5em;
+    font-size: 85%;
     font-weight: 300;
   }
 </style>
