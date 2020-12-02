@@ -77,6 +77,8 @@ export default {
         </a>
       </div>      
     </div>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -88,12 +90,20 @@ export default {
   }
 
   body {
-    padding: 0 100px;
     max-width: 1440px;
     display: flex;
     align-items: center;
     margin: 0 auto;
     height: 100%;
+    padding: 0 100px;
+
+    @media screen and (max-width: 720px) {
+      align-items: baseline;
+    }
+
+    @media screen and (max-width: 480px) {
+      padding: 0 30px;
+    }
   }
 
   h2 {
@@ -121,6 +131,11 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     gap: 50px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1290px) {
+      justify-content: space-around;
+    }
   }
 
   .container > * {
@@ -133,6 +148,10 @@ export default {
     flex-wrap: wrap;
     gap: 40px;
     align-items: center;
+
+    @media screen and (max-width: 1290px) {
+      justify-content: space-evenly;
+    }
   }
 
   .status-container-creeper {
@@ -149,6 +168,11 @@ export default {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+
+    @media screen and (max-width: 1290px) {
+      min-width: 100%;
+      justify-content: space-evenly;
+    }
   }
 
   .message-container > * {
