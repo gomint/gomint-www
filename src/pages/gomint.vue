@@ -40,7 +40,7 @@ export default {
         </div>
     </div>
     <div class="message-container">
-      <h5 class="message-container-title">What a doozy.</h5>
+      <h5 class="message-container-title">What a bummer.</h5>
       <span class="message-container-message">
         The new GoMint website isn't quite ready yet, but
         we're working on it! In the meanwhile, if you were
