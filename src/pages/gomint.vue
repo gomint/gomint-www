@@ -72,7 +72,7 @@ export default {
           &nbsp;
           <span class="release-info">
             <span v-if="release.isLoading">Loading...</span>
-            <span v-else>{{ release.tag }}, {{ (release.assetSize / 1024 / 1024).toFixed(2) }}MB</span>
+            <span v-else>{{ release.tag }}, {{ (release.assetSize / 1024 / 1024).toFixed(2) }} MiB</span>
           </span>
         </a>
       </div>      
