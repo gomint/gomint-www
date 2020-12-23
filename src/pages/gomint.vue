@@ -60,7 +60,7 @@ export default {
           &nbsp;
           Source code
         </a>
-        <a class="message-container-interactable" href="https://docs.gomint.io">
+        <a class="message-container-interactable" href="https://docs.gomint.io/docs/guides">
           <i class="fas fa-book"></i>
           &nbsp;
           Documentation
