@@ -16,7 +16,7 @@ export default {
       const releaseData = await releasesData.json();
       release.tag = releaseData[0].tag_name;
 
-      const assetsEndpoint = releaseData[0].assets[2].url;
+      const assetsEndpoint = releaseData[0].assets[0].url;
       const assetsData = await fetch(assetsEndpoint);
       const assetData = await assetsData.json();
       release.assetSize = assetData.size;
